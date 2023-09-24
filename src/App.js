@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import React from "react";
 import { MDBRow } from "mdb-react-ui-kit";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -23,22 +23,16 @@ function App() {
       .then((response) => {
         const apidata = response.data;
         setApiData(apidata);
-        // console.log(response);
       });
   };
-  // liveData();
-  useEffect(() => {
-    liveData();
+
+  useMemo(() => {
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
 
-    // const tId = setInterval(() => {
-    //   console.log("setInterval loop");
-    // }, 5000);
+    liveData();
   }, [filter]);
-  // console.warn(apidata);
-  // -----------------------------------
 
   return (
     <div className="App">
@@ -535,7 +529,7 @@ function App() {
                   />
                   <Carousel.Caption>
                     <h5>{item.title}</h5>
-                    <p>{item.content}</p>
+                    <p>{item["content"].slice(0,item["content"].length-50)}...</p>
                   </Carousel.Caption>
                 </Carousel.Item>
               );
@@ -586,7 +580,7 @@ function App() {
           <MDBRow className="row row-cols-1 row-cols-md-3 g-4 ">
             {apidata.map((item, index) => {
               return (
-                <div class="col">
+                <div class="col" key={index}>
                   <div class="card">
                     <img
                       src={item.imageUrl}
@@ -596,7 +590,7 @@ function App() {
                       height="279px"
                     />
                     <div class="card-body">
-                      <h5 class="card-title">{item.title}</h5>
+                      <h5 class="card-title">{item["title"]}</h5>
                       <p class="card-text">{item.content}</p>
                     </div>
                   </div>
