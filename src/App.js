@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import React from "react";
 import { MDBRow } from "mdb-react-ui-kit";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -529,7 +529,7 @@ function App() {
                   />
                   <Carousel.Caption>
                     <h5>{item.title}</h5>
-                    <p>{item["content"].slice(0,item["content"].length-50)}...</p>
+                    <p>{item["content"].slice(0, 200)}...</p>
                   </Carousel.Caption>
                 </Carousel.Item>
               );
