@@ -17,31 +17,7 @@ function App() {
   const [filter, setFilter] = useState("all");
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  const skeleton = [
-    <div className="nav-item">
-      <h1>
-        <Container>
-          <LoadingBar
-            color="#f11946"
-            progress={progress}
-            shadow={true}
-            onLoaderFinished={() => setProgress(0)}
-          />
-          <Navbar expand="lg" className="bg-body-tertiary">
-            <Container
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Navbar.Brand href="#">News Web - Portal</Navbar.Brand>
-            </Container>
-          </Navbar>
-        </Container>
-      </h1>
-    </div>,
-  ];
+  const skeleton = [];
 
   const liveData = () => {
     fetch(`https://inshortsapi.vercel.app/news?category=${filter}`)
@@ -67,6 +43,30 @@ function App() {
   return (
     <LoadingBarProvider value={{ progress, setProgress }}>
       <div className="App">
+        <div className="nav-item">
+          <h1>
+            <Container>
+              <LoadingBar
+                color="#f11946"
+                progress={progress}
+                shadow={true}
+                onLoaderFinished={() => setProgress(0)}
+              />
+              <Navbar expand="lg" className="bg-body-tertiary">
+                <Container
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Navbar.Brand href="#">News Web - Portal</Navbar.Brand>
+                </Container>
+              </Navbar>
+            </Container>
+          </h1>
+        </div>
+
         {isLoading ? (
           <>
             <Skeleton
