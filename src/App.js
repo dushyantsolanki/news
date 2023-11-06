@@ -17,9 +17,10 @@ function App() {
   const [filter, setFilter] = useState("all");
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  const skeleton = [];
+  
 
   const liveData = () => {
+    setProgress(20);
     fetch(`https://inshortsapi.vercel.app/news?category=${filter}`)
       .then((result) => {
         setProgress(50);
