@@ -17,6 +17,31 @@ function App() {
   const [filter, setFilter] = useState("all");
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const skeleton = [
+    <div className="nav-item">
+      <h1>
+        <Container>
+          <LoadingBar
+            color="#f11946"
+            progress={progress}
+            shadow={true}
+            onLoaderFinished={() => setProgress(0)}
+          />
+          <Navbar expand="lg" className="bg-body-tertiary">
+            <Container
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Navbar.Brand href="#">News Web - Portal</Navbar.Brand>
+            </Container>
+          </Navbar>
+        </Container>
+      </h1>
+    </div>,
+  ];
 
   const liveData = () => {
     fetch(`https://inshortsapi.vercel.app/news?category=${filter}`)
@@ -42,28 +67,6 @@ function App() {
   return (
     <LoadingBarProvider value={{ progress, setProgress }}>
       <div className="App">
-        <div className="nav-item">
-          <h1>
-            <Container>
-              <LoadingBar
-                color="#f11946"
-                progress={progress}
-                onLoaderFinished={() => setProgress(0)}
-              />
-              <Navbar expand="lg" className="bg-body-tertiary">
-                <Container
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Navbar.Brand href="#">News Web - Portal</Navbar.Brand>
-                </Container>
-              </Navbar>
-            </Container>
-          </h1>
-        </div>
         {isLoading ? (
           <>
             <Skeleton
@@ -80,457 +83,13 @@ function App() {
               // width={1500}
               height={75}
             />
-
-            <MDBRow className="row row-cols-1 row-cols-md-3 g-4 ">
-              <div className="skelton-box">
-                <div>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={300}
-                  />
-                </div>
-                <h2>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={400}
-                    height={50}
-                  />
-
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                </h2>
-              </div>
-              <div className="skelton-box">
-                <div>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={300}
-                  />
-                </div>
-                <h2>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={400}
-                    height={50}
-                  />
-
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                </h2>
-              </div>
-              <div className="skelton-box">
-                <div>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={300}
-                  />
-                </div>
-                <h2>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={400}
-                    height={50}
-                  />
-
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                </h2>
-              </div>
-              <div className="skelton-box">
-                <div>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={300}
-                  />
-                </div>
-                <h2>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={400}
-                    height={50}
-                  />
-
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                </h2>
-              </div>
-              <div className="skelton-box">
-                <div>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={300}
-                  />
-                </div>
-                <h2>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={400}
-                    height={50}
-                  />
-
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                </h2>
-              </div>
-              <div className="skelton-box">
-                <div>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={300}
-                  />
-                </div>
-                <h2>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={400}
-                    height={50}
-                  />
-
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                </h2>
-              </div>
-              <div className="skelton-box">
-                <div>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={300}
-                  />
-                </div>
-                <h2>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={400}
-                    height={50}
-                  />
-
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                </h2>
-              </div>
-              <div className="skelton-box">
-                <div>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={300}
-                  />
-                </div>
-                <h2>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={400}
-                    height={50}
-                  />
-
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                </h2>
-              </div>
-              <div className="skelton-box">
-                <div>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={300}
-                  />
-                </div>
-                <h2>
-                  <Skeleton
-                    className="cards-item"
-                    animation="wave"
-                    variant="rectangular"
-                    width={400}
-                    height={50}
-                  />
-
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                  <Skeleton
-                    className="cards-itemp"
-                    animation="wave"
-                    variant="rectangular"
-                    width={445}
-                    height={20}
-                  />
-                </h2>
-              </div>
-            </MDBRow>
           </>
         ) : (
           <>
             <Carousel className="top container-fluid">
               {apidata.map((item, index) => {
                 return (
-                  <Carousel.Item>
+                  <Carousel.Item key={index}>
                     <img
                       className="d-block w-100"
                       src={item.imageUrl}
@@ -591,19 +150,18 @@ function App() {
             <MDBRow className="row row-cols-1 row-cols-md-3 g-4 ">
               {apidata.map((item, index) => {
                 return (
-                  <div class="col" key={index}>
-                    {console.log(index)}
-                    <div class="card">
+                  <div className="col" key={index}>
+                    <div className="card">
                       <img
                         src={item.imageUrl}
-                        class="card-img-top"
+                        className="card-img-top"
                         alt=""
                         width="496px"
                         height="279px"
                       />
-                      <div class="card-body">
-                        <h5 class="card-title">{item["title"]}</h5>
-                        <p class="card-text">{item.content}</p>
+                      <div className="card-body">
+                        <h5 className="card-title">{item["title"]}</h5>
+                        <p className="card-text">{item.content}</p>
                       </div>
                     </div>
                   </div>
