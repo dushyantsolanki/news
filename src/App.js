@@ -5,10 +5,9 @@ import { MDBRow } from "mdb-react-ui-kit";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Carousel from "react-bootstrap/Carousel";
 import "@fontsource/roboto/400.css";
-import { Button } from "@mui/material";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
-import { Skeleton } from "@mui/material";
+import { Skeleton, Button } from "@mui/material";
 import { LoadingBarProvider } from "./contexts/toLoadingBar";
 import LoadingBar from "react-top-loading-bar";
 
@@ -17,9 +16,12 @@ function App() {
   const [filter, setFilter] = useState("all");
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  
 
-  const liveData = () => {
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
     setProgress(20);
     fetch(`https://inshortsapi.vercel.app/news?category=${filter}`)
       .then((result) => {
@@ -31,14 +33,6 @@ function App() {
         setApiData(apidata);
         setProgress(100);
       });
-  };
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-
-    liveData();
   }, [filter]);
 
   return (
@@ -61,7 +55,7 @@ function App() {
                     justifyContent: "center",
                   }}
                 >
-                  <Navbar.Brand href="#">News Web - Portal</Navbar.Brand>
+                  <Navbar.Brand href="#">Newsify</Navbar.Brand>
                 </Container>
               </Navbar>
             </Container>
@@ -74,15 +68,15 @@ function App() {
               className="container-fluid"
               animation="wave"
               variant="rectangular"
-              width={1500}
-              height={650}
+              width={800}
+              height={600}
             />
             <Skeleton
               className="filter-item"
               animation="wave"
               variant="rectangular"
-              // width={1500}
-              height={75}
+              width={800}
+              height={600}
             />
           </>
         ) : (
@@ -92,15 +86,14 @@ function App() {
                 return (
                   <Carousel.Item key={index}>
                     <img
-                      className="d-block w-100"
+                      className="d-block w-100 "
                       src={item.imageUrl}
                       alt={index}
-                      width={650}
-                      height={650}
+                      width={800}
+                      height={600}
                     />
                     <Carousel.Caption>
                       <h5>{item.title}</h5>
-                      <p>{item["content"].slice(0, 200)}...</p>
                     </Carousel.Caption>
                   </Carousel.Item>
                 );
@@ -131,6 +124,7 @@ function App() {
                 className="box"
                 variant="contained"
                 value="sports"
+                
                 onClick={(e) => {
                   setFilter(e.target.value);
                 }}
