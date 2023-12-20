@@ -55,7 +55,7 @@ function App() {
                     justifyContent: "center",
                   }}
                 >
-                  <Navbar.Brand href="#">Newsify</Navbar.Brand>
+                  <Navbar.Brand href="#">News Portal</Navbar.Brand>
                 </Container>
               </Navbar>
             </Container>
@@ -124,7 +124,6 @@ function App() {
                 className="box"
                 variant="contained"
                 value="sports"
-                
                 onClick={(e) => {
                   setFilter(e.target.value);
                 }}
